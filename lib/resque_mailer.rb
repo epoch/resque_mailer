@@ -39,6 +39,11 @@ module Resque
                 resque.enqueue_in(time, mailer_class, method_name, *args)
                 self
               end
+
+              define_method(:deliver_at) do |time|
+                resque.enqueue_at(time, mailer_class, method_name, *args)
+                self
+              end
             end
           end
         else
